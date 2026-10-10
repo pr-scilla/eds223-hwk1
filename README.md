@@ -1,6 +1,6 @@
 # EDS 223 Homework Assignment 1: Map Making Practice
 
-This assignment explores mapping environmental injustice topics of our choosing using data from the United States Environmental Protection Agency’s previous [EJScreen: Environmental Justice Screening and Mapping Tool](https://19january2021snapshot.epa.gov/ejscreen/download-ejscreen-data_.html). 
+This assignment explores mapping environmental injustice topics using data from the United States Environmental Protection Agency’s previous [EJScreen: Environmental Justice Screening and Mapping Tool](https://19january2021snapshot.epa.gov/ejscreen/download-ejscreen-data_.html). 
 
 The two maps created for this assignment explore toxic releases to air and air toxics cancer risk in the region I grew up in, southwestern San Bernardino County. 
 
