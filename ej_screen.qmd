@@ -1,5 +1,142 @@
 ---
-title: "Homework Assignment 1: Map Making Practice"
-name: "Priscilla Pierce"
-format: pdf
+title: "EDS 223: Homework Assignment 1"
+subtitle: "Toxic Releases to Air and Air Toxics Cancer risk in Southwestern San Bernardino County, California"
+author: "Priscilla Pierce"
+date: 10-09-2026
+format:
+  pdf:
+    toc: false
+    code-fold: false
+execute:
+  echo: true
+  warning: false
+  message: false
+  results: hide
 ---
+
+# Toxic Releases to Air and Air Toxics Cancer risk in Southwestern San Bernardino County, California
+
+## Introduction
+
+San Bernardino County, California is the state's largest county by total land area^[5](#citations), with the majority of its cities located in the southwesternmost 2%^[4](#citations) of the county. According to the American Lung Association State of the Air 2026 report, San Bernardino County is ranked the number one most polluted
+county for ozone and particle pollution in the United States^[1](#citations) based on air quality monitoring data from the United States Environmental Protection Agency (US EPA). 
+
+In addition air quality montioring, the US EPA tracks the release of hundreds of toxic chemicals through the Toxic Release Inventory (TRI) program^[3](#citations), including chemicals subject to reporting under the Clean Air Act. In an area known to be impacted by pollution, investigating air quality impacts beyond ozone and particle pollution may reveal addional potential health impacts worth investigating in the region. The following maps were created to explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County. 
+
+Data for these maps were sourced from the US EPA’s previous [EJScreen: Environmental Justice Screening and Mapping Tool](#data-source).
+
+## Load Packages
+```{r}
+#| results: hide
+
+# Load packages
+library(tidyverse)
+library(sf)
+library(tmap)
+library(here)
+```
+
+## Import Data
+```{r}
+# Read in geodatabase of EJScreen data at the Census Block Group level
+ejscreen <- sf::st_read(here::here("data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb")) 
+
+# Filter to California
+california <- ejscreen |> 
+  dplyr::filter(ST_ABBREV == "CA") 
+
+# Filter to San Bernardino County
+san_bernardino <- ejscreen |> 
+  dplyr::filter(CNTY_NAME %in% c("San Bernardino County"))
+
+```
+
+## Visualize Data
+
+The following maps explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County.
+
+The **toxic releases to air indicator** was determined by US EPA EJScreen using data reported by facilities to the US EPA's Toxic Release Inventory (TRI) program through 2021 Risk-Screening Environmental Indicators modeled results. The TRI program covers chemicals that are known to cause cancer, significant adverse chronic and acute human health effects, and signficant adverse environmental effects^[TRI](#citations). This indicator is intended to visualize modeled toxicity-weighted concentrations of TRI-listed checmicals in the air.
+
+The **air toxics cancer risk indicator** was determined by US EPA EJScreen using 2019 US EPA Air Quality Planning and Standards data. This indicator is intended to visualize lifetime cancer risk from inhalation of air toxics.
+
+Statistical percentile data for the two indicator values were chosen in order to represent the indicators clearly for comparison. 
+
+### Toxic Releases to Air
+
+```{r}
+tmap_mode('plot')
+
+# Visualize toxic releases to air percentiles
+
+sw_sb_toxic_release <- tm_shape(san_bernardino, bbox = c(-118, 33.8, -117, 34.4)) + # Add bounding box to restrict to southwestern area of county
+    tm_graticules() + # Add lat and long lines
+    tm_polygons(fill = 'P_RSEI_AIR', # Add toxic releases to air percentile data
+                fill.scale = tm_scale_intervals(
+                  breaks = c(0, 25, 50, 80, 90, 100),
+                  values = c('lightgreen', 'yellow', 'darkred')),
+                fill.legend = tm_legend(
+                  title = 'Toxic Releases to Air',
+                  labels = c('0 - 25 percentile', '25 - 50 percentile', '50 - 80 percentile', '80 - 90 percentile', '90 - 100 percentile'),
+                  position = tm_pos_out('right')),
+                col = 'white',
+                lwd = 0.2) +
+    tm_compass(position = c('left', 'bottom'), # Add compass
+                size = 2) +
+    tm_scalebar(position = c('right', 'bottom')) + # Add scalebar
+    tm_title('Southwestern San Bernardino County Toxic Releases to Air Percentiles',
+              fontface = 'bold')
+
+sw_sb_toxic_release
+
+```
+
+### Air Toxics Cancer Risk
+
+```{r}
+
+# Visualize lifetime cancer risk from inhalation of air toxics
+
+sw_sb_cancer_risk <- tm_shape(san_bernardino, bbox = c(-118, 33.8, -117, 34.4)) + # Add bounding box to restrict to southwestern area of county
+    tm_graticules() + # Add lat and long lines
+    tm_polygons(fill = 'P_CANCER', # Add air toxics cancer risk percentile data
+                fill.scale = tm_scale_intervals(
+                  breaks = c(0, 25, 50, 80, 90, 100),
+                  values = c('lightgreen', 'yellow', 'darkred')),
+                  fill.legend = tm_legend(
+                    title = 'Air Toxics Cancer Risk',
+                    labels = c('0 - 25 percentile', '25 - 50 percentile', '50 - 80 percentile', '80 - 90 percentile', '90 - 100 percentile', 'Data unavailable'),
+                    position = tm_pos_out('right')),
+                  col = 'white', 
+                 lwd = 0.2) +
+    tm_compass(position = c('left', 'bottom'), # Add compass
+                size = 2) +
+    tm_scalebar(position = c('right', 'bottom')) + # Add scalebar
+    tm_title('Southwestern San Bernardino County Air Toxics Cancer Risk Percentiles',
+              fontface = 'bold') 
+
+sw_sb_cancer_risk
+```
+
+## Interpretation 
+
+Toxic releases to the air are concentrated to the south in a distinct hot spot where the highest percentiles are concentrated, and percentiles gradually decrease towards the northeastern direction on the map. The highest air toxics cancer risk percentiles (90 - 100 percentile) form a band of census tracts from west to east in the southern portion of the map, with several tracts overlapping the tracts included in toxic releases to air hotspot. Beyond the band of 90 - 100 percentile tracts, percentiles drop to the 25 - 50 percentile range and reduce to 0 - 25 percentile in the northeast.
+
+Due to overlap and proximity of the highest percentiles for the two indicators, these maps imply that there may be a relationship between toxic releases to the air and air toxics cancer risk that would be worth investigating further.
+
+While these visuals are thought-provoking, they only capture two indicators and a conclusive assessment cannot be made with this limited information. Further analysis of other air quality indicators and cancer risk factors in this region would be necessary to complete a detailed risk analysis.
+
+## Data Source
+
+Environmental Protection Agency. *EJSCREEN: Environmental Justice Screening and Mapping Tool*. https://19january2021snapshot.epa.gov/ejscreen/download-ejscreen-data_.html
+
+## Citations
+
+1. American Lung Association. *State of the Air 2026 Report*. https://www.lung.org/getmedia/32f0646d-c5de-4501-b0ac-07cd63c974d4/State-of-the-Air-2026-Report.pdf
+
+2. Environmental Protection Agency. *AirToxScreen Frequent Questions*. https://www.epa.gov/AirToxScreen/airtoxscreen-frequent-questions 
+
+3. Environmental Protection Agency. *What is the Toxics Release Inventory?*. https://www.epa.gov/toxics-release-inventory-tri-program/what-toxics-release-inventory
+
+4. San Bernardino County. *County Profile* https://indicators.sbcounty.gov/county-profile/
+
+5. United States Census Bureau. *San Bernardino County, California* https://data.census.gov/profile/San_Bernardino_County,_California?g=050XX00US06071
