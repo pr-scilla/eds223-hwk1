@@ -51,11 +51,11 @@ san_bernardino <- ejscreen |>
 
 The following maps explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County.
 
-The **toxic releases to air indicator** was determined by US EPA EJScreen using data reported by facilities to the US EPA's Toxic Release Inventory (TRI) program through 2021 Risk-Screening Environmental Indicators modeled results. The TRI program covers chemicals that are known to cause cancer, significant adverse chronic and acute human health effects, and signficant adverse environmental effects _[(3)](#citations)_. This indicator is intended to visualize modeled toxicity-weighted concentrations of TRI-listed checmicals in the air.
+The **toxic releases to air indicator** was determined by US EPA EJScreen using data reported by facilities to the US EPA's Toxic Release Inventory (TRI) program through 2021 Risk-Screening Environmental Indicators modeled results. The TRI program covers chemicals that are known to cause cancer, significant adverse chronic and acute human health effects, and signficant adverse environmental effects _[(3)](#citations)_. This indicator is intended to visualize modeled toxicity-weighted concentrations of TRI-listed chemicals in the air.
 
 The **[air toxics cancer risk indicator](#citations)** was determined by US EPA EJScreen using 2019 US EPA Air Quality Planning and Standards data. This indicator is intended to visualize lifetime cancer risk from inhalation of air toxics.
 
-Statistical percentile data for the two indicator values were chosen in order to represent the indicators clearly for comparison. 
+Statistical percentile data for the two indicator values were used in order to represent the indicators clearly for comparison. 
 
 ### Toxic Releases to Air
 
@@ -116,7 +116,7 @@ sw_sb_cancer_risk
 
 ## Interpretation 
 
-Toxic releases to the air are concentrated to the south in a distinct hot spot where the highest percentiles are concentrated, and percentiles gradually decrease towards the northeastern direction on the map. The highest air toxics cancer risk percentiles (90 - 100 percentile) form a band of census tracts from west to east in the southern portion of the map, with several tracts overlapping the tracts covered by the toxic releases to air hotspot. Beyond the band of 90 - 100 percentile tracts for toics cancer risk, percentiles drop to the 25 - 50 percentile range and reduce to 0 - 25 percentile in the northeast.
+Toxic releases to the air are concentrated to the south in a distinct hot spot where the highest percentiles are concentrated, and percentiles gradually decrease towards the northeastern direction on the map. The highest air toxics cancer risk percentiles (90 - 100 percentile) form a band of census tracts from west to east in the southern portion of the map, with several tracts overlapping the tracts covered by the toxic releases to air hotspot. Beyond the band of 90 - 100 percentile tracts for toxics cancer risk, percentiles drop to the 25 - 50 percentile range and reduce to 0 - 25 percentile in the northeast.
 
 Due to the proximity and overlap of the highest percentiles for the two indicators, these maps imply that there may be a relationship between toxic releases to the air and air toxics cancer risk that would be worth investigating further.
 
