@@ -3,10 +3,7 @@ title: "EDS 223: Homework Assignment 1"
 subtitle: "Toxic Releases to Air and Air Toxics Cancer Risk in Southwestern San Bernardino County, California"
 author: "Priscilla Pierce"
 date: 10-09-2026
-format:
-  pdf:
-    toc: false
-    code-fold: false
+format: typst
 execute:
   echo: true
   warning: false
@@ -18,10 +15,9 @@ execute:
 
 ## Introduction
 
-San Bernardino County, California is the state's largest county by total land area<sup>[5](#citations)</sup>, with the majority of its cities located in the southwesternmost 2%<sup>[4](#citations)</sup> of the county. According to the American Lung Association State of the Air 2026 report, San Bernardino County is ranked the number one most polluted
-county for ozone and particle pollution in the United States<sup>[1](#citations)</sup> based on air quality monitoring data from the United States Environmental Protection Agency (US EPA). 
+San Bernardino County, California is the state's largest county by total land area _[(5)](#citations)_, with the majority of its cities located in the southwesternmost 2% _[(4)](#citations)_ of the county. According to the American Lung Association State of the Air 2026 report, San Bernardino County is ranked the number one most polluted county for ozone and particle pollution in the United States _[(1)](#citations)_ based on air quality monitoring data from the United States Environmental Protection Agency (US EPA). 
 
-In addition air quality montioring, the US EPA tracks the release of hundreds of toxic chemicals through the Toxic Release Inventory (TRI) program<sup>[3](#citations)</sup>, including chemicals subject to reporting under the Clean Air Act. In an area known to be impacted by pollution, investigating air quality impacts beyond ozone and particle pollution may reveal addional potential health impacts worth investigating in the region. The following maps were created to explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County. 
+In addition air quality montioring, the US EPA tracks the release of hundreds of toxic chemicals through the Toxic Release Inventory (TRI) program _[(3)](#citations)_, including chemicals subject to reporting under the Clean Air Act. In an area known to be impacted by pollution, investigating air quality impacts beyond ozone and particle pollution may reveal addional potential health impacts worth investigating in the region. The following maps were created to explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County. 
 
 Data for these maps were sourced from the US EPA’s previous [EJScreen: Environmental Justice Screening and Mapping Tool](#data-source).
 
@@ -38,8 +34,6 @@ library(here)
 
 ## Import Data
 ```{r}
-#| code-fold: false
-
 # Read in geodatabase of EJScreen data at the Census Block Group level
 ejscreen <- sf::st_read(here::here("data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb")) 
 
@@ -57,16 +51,16 @@ san_bernardino <- ejscreen |>
 
 The following maps explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County.
 
-The **toxic releases to air indicator** was determined by US EPA EJScreen using data reported by facilities to the US EPA's Toxic Release Inventory (TRI) program through 2021 Risk-Screening Environmental Indicators modeled results. The TRI program covers chemicals that are known to cause cancer, significant adverse chronic and acute human health effects, and signficant adverse environmental effects<sup>[3](#citations)</sup>. This indicator is intended to visualize modeled toxicity-weighted concentrations of TRI-listed checmicals in the air.
+The **toxic releases to air indicator** was determined by US EPA EJScreen using data reported by facilities to the US EPA's Toxic Release Inventory (TRI) program through 2021 Risk-Screening Environmental Indicators modeled results. The TRI program covers chemicals that are known to cause cancer, significant adverse chronic and acute human health effects, and signficant adverse environmental effects _[(3)](#citations)_. This indicator is intended to visualize modeled toxicity-weighted concentrations of TRI-listed checmicals in the air.
 
-The **air toxics cancer risk indicator** was determined by US EPA EJScreen using 2019 US EPA Air Quality Planning and Standards data. This indicator is intended to visualize lifetime cancer risk from inhalation of air toxics.
+The **[air toxics cancer risk indicator](#citations)** was determined by US EPA EJScreen using 2019 US EPA Air Quality Planning and Standards data. This indicator is intended to visualize lifetime cancer risk from inhalation of air toxics.
 
 Statistical percentile data for the two indicator values were chosen in order to represent the indicators clearly for comparison. 
 
 ### Toxic Releases to Air
 
 ```{r}
-#| code-fold: false
+
 tmap_mode('plot')
 
 # Visualize toxic releases to air percentiles
@@ -96,7 +90,7 @@ sw_sb_toxic_release
 ### Air Toxics Cancer Risk
 
 ```{r}
-#| code-fold: false
+
 # Visualize lifetime cancer risk from inhalation of air toxics
 
 sw_sb_cancer_risk <- tm_shape(san_bernardino, bbox = c(-118, 33.8, -117, 34.4)) + # Add bounding box to restrict to southwestern area of county
