@@ -10,9 +10,9 @@ EDS223-HWK1
 └───data                 
      └───ejscreen        # folder containing data files for assignment, added to .gitignore
 │   .gitignore           # data folder was added to .gitignore
+│   README.md
 |   ej_screen.pdf        # rendered .pdf of quarto document
 │   ej_screen.qmd        # quarto document containing assignment code and interpretation 
-│   README.md
 ```
 
 ## Data Access
