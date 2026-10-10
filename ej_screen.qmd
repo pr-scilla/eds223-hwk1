@@ -15,9 +15,9 @@ execute:
 
 ## Introduction
 
-San Bernardino County, California is the state's largest county by total land area _[(5)](#citations)_, with the majority of its cities located in the southwesternmost 2% _[(4)](#citations)_ of the county. According to the American Lung Association State of the Air 2026 report, San Bernardino County is ranked the number one most polluted county for ozone and particle pollution in the United States _[(1)](#citations)_ based on air quality monitoring data from the United States Environmental Protection Agency (US EPA). 
+San Bernardino County, California is the state's largest county by total land area _[(5)](#citations)_, with the majority of its cities located in the southwesternmost 2% _[(4)](#citations)_ of the county. According to the American Lung Association State of the Air 2026 report's assessment of air quality montoring data from the United States Environmental Protection Agency (US EPA), San Bernardino County is ranked the number one most polluted county for ozone and particle pollution in the United States _[(1)](#citations)_. 
 
-In addition air quality montioring, the US EPA tracks the release of hundreds of toxic chemicals through the Toxic Release Inventory (TRI) program _[(3)](#citations)_, including chemicals subject to reporting under the Clean Air Act. In an area known to be impacted by pollution, investigating air quality impacts beyond ozone and particle pollution may reveal addional potential health impacts worth investigating in the region. The following maps were created to explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County. 
+In addition to air quality montioring, the US EPA tracks the release of hundreds of toxic chemicals through the Toxic Release Inventory (TRI) program _[(3)](#citations)_, including chemicals subject to reporting under the Clean Air Act. In an area known to be impacted by pollution, investigating air quality impacts beyond ozone and particle pollution may reveal addional potential health impacts worth investigating in the region. The following maps were created to explore toxic releases to air and air toxics cancer risk in southwestern San Bernardino County. 
 
 Data for these maps were sourced from the US EPA’s previous [EJScreen: Environmental Justice Screening and Mapping Tool](#data-source).
 
@@ -116,9 +116,9 @@ sw_sb_cancer_risk
 
 ## Interpretation 
 
-Toxic releases to the air are concentrated to the south in a distinct hot spot where the highest percentiles are concentrated, and percentiles gradually decrease towards the northeastern direction on the map. The highest air toxics cancer risk percentiles (90 - 100 percentile) form a band of census tracts from west to east in the southern portion of the map, with several tracts overlapping the tracts included in toxic releases to air hotspot. Beyond the band of 90 - 100 percentile tracts, percentiles drop to the 25 - 50 percentile range and reduce to 0 - 25 percentile in the northeast.
+Toxic releases to the air are concentrated to the south in a distinct hot spot where the highest percentiles are concentrated, and percentiles gradually decrease towards the northeastern direction on the map. The highest air toxics cancer risk percentiles (90 - 100 percentile) form a band of census tracts from west to east in the southern portion of the map, with several tracts overlapping the tracts covered by the toxic releases to air hotspot. Beyond the band of 90 - 100 percentile tracts for toics cancer risk, percentiles drop to the 25 - 50 percentile range and reduce to 0 - 25 percentile in the northeast.
 
-Due to overlap and proximity of the highest percentiles for the two indicators, these maps imply that there may be a relationship between toxic releases to the air and air toxics cancer risk that would be worth investigating further.
+Due to the proximity and overlap of the highest percentiles for the two indicators, these maps imply that there may be a relationship between toxic releases to the air and air toxics cancer risk that would be worth investigating further.
 
 While these visuals are thought-provoking, they only capture two indicators and a conclusive assessment cannot be made with this limited information. Further analysis of other air quality indicators and cancer risk factors in this region would be necessary to complete a detailed risk analysis.
 
